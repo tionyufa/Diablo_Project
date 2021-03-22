@@ -1,7 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+
+[System.Serializable]
+public class Enemy
+{
+   public List <SkinnedMeshRenderer> _meshRenderers;
+   public float maxHealts;
+   [HideInInspector] public float currentHP;
+   public string Name;
+   public EnemyList _myTyp;
+
+   public void setHP(float _hp)
+   {
+      currentHP = _hp;
+   }
+
+   public void AddOutline()
+   {
+      for (int i = 0; i < _meshRenderers.Count; i++)
+      {
+         _meshRenderers[i].material.color = Color.red;
+      }
+   }
+
+   public void ShowOutline()
+   {
+      for (int i = 0; i < _meshRenderers.Count; i++)
+      {
+         _meshRenderers[i].material.color = Color.white;
+      }
+   }
+}
 
 [RequireComponent(typeof( NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -9,8 +42,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(EnemyAttack))]
 public abstract class EnemySystem : MonoBehaviour
 {
-   [SerializeField] private Material _material;
-   [SerializeField] protected int _healts;
+   [SerializeField] private Enemy _myChar;
    [SerializeField] protected float _speed;
    protected NavMeshAgent _agent;
    protected Animator _animator;
@@ -23,6 +55,7 @@ public abstract class EnemySystem : MonoBehaviour
 
    private void Start()
    {
+      _myChar.currentHP = _myChar.maxHealts;
       _playerLayer = LayerMask.GetMask("Player");
       _ground = LayerMask.GetMask("Ground");
       _agent = GetComponent<NavMeshAgent>();
@@ -82,12 +115,28 @@ public abstract class EnemySystem : MonoBehaviour
    
    public abstract void Attack();
 
-   public float getHP()
+   public Enemy getChar()
    {
-      return _healts;
+      return _myChar;
    }
 
-  
+   private void OnMouseEnter()
+   {
+      ToolTip.singleton.ToolTipAction(_myChar);
+   }
+
+   private void OnMouseExit()
+   {
+      ToolTip.singleton.ToolTipExit();
+   }
+}
+
+public enum EnemyList
+{
+   Demon,
+   Skelet,
+   Animal
+   
 }
 
 

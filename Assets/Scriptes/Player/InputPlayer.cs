@@ -29,15 +29,13 @@ public class InputPlayer : MonoBehaviour
         _isAttackPassive = false;
     }
 
+    
     private void Update()
     {
         CheckAttack();
+        MovePlayer();
     }
-
-    private void FixedUpdate()
-    {
-       MovePlayer();
-    }
+   
 
     private void MovePlayer()
     {

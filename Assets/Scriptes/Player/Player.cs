@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour 
 {
     public static Player singleton;
     [Header("ScriptesPlayer")]
@@ -69,15 +69,18 @@ public class Player : MonoBehaviour
         {
             _rigidbody.isKinematic = false;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out _hit, 100, _layer))
-            { 
-                if (_hit.collider.GetComponent<EnemyHealts>() != null)
+            {
+                if (_hit.collider.gameObject.layer == 10)
                 {
                     isEnemy = true;
                     _target = _hit.collider.gameObject;
                     _animator.SetFloat(nameAnimator.HashRun, 1f);
+                   
                     return;
                 }
             }
+            
+            
             isEnemy = false;
             _point = _hit.point;
             _animator.SetFloat(nameAnimator.HashRun, 1f);
@@ -102,16 +105,22 @@ public class Player : MonoBehaviour
             if (x <= 5f && z <= 5f && _inputPlayer.isAttack_1())
             {
                  attack1 = true;
-                 _agent.SetDestination(targetPosition);
+                 _agent.SetDestination(position);
                 _animator.SetFloat(nameAnimator.HashRun, 0f);
                 _eventSkill_1.Invoke();
             } 
             else if (x <= 5f && z <= 5f && _inputPlayer.isAttack_2())
             {
                  attack1 = false; 
-                _agent.SetDestination(targetPosition);
+                _agent.SetDestination(position);
                 _animator.SetFloat(nameAnimator.HashRun, 0f);
                 _eventSkill_2.Invoke();
+            }
+
+            else if (x <= 5f && z <= 5f)
+            {
+                _agent.SetDestination(position);
+                _animator.SetFloat(nameAnimator.HashRun, 0f);
             }
         }
         else if (!isEnemy)
@@ -139,7 +148,7 @@ public class Player : MonoBehaviour
             _attackPlayer.SetTarget(_target);
             _animator.SetTrigger(nameAnimator.HashAttack);
             _inputPlayer.returnState();
-            _target = gameObject;
+            
         }
     }
     public void Attack_2()
@@ -149,7 +158,7 @@ public class Player : MonoBehaviour
             _rigidbody.isKinematic = true;
             _animator.SetTrigger(nameAnimator.HashAttackPassive);
             _inputPlayer.returnState();
-            _target = gameObject;
+            
         }
     }
     
@@ -169,7 +178,7 @@ public class Player : MonoBehaviour
     
     public void SetBonus()
     {
-        PlayerCharacterics.singleton.tempBonus(Stat.Damage,5,15);
+        PlayerCharacterics.singleton.tempBonus(typeChar.Damage,5,15);
     }
     
 

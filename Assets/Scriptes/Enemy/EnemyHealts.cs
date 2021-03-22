@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class EnemyHealts : MonoBehaviour
 {
+    private Enemy _myChar;
     private float _currentHP;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Canvas _canvas;
@@ -13,8 +14,8 @@ public class EnemyHealts : MonoBehaviour
 
     private void Awake()
     {
-        _maxHP = gameObject.GetComponent<EnemySystem>().getHP();
-        _currentHP = _maxHP;
+        _myChar = gameObject.GetComponent<EnemySystem>().getChar();
+        _currentHP = _myChar.maxHealts;
         _canvas.worldCamera = Camera.main;
     }
 
@@ -34,7 +35,8 @@ public class EnemyHealts : MonoBehaviour
     public void ReceiveDamage(float damage)
     {
        _currentHP -= damage;
-       _currentHP = Mathf.Clamp(_currentHP, 0, _maxHP);
+       _currentHP = Mathf.Clamp(_currentHP, 0, _myChar.maxHealts);
+       _myChar.setHP(_currentHP);
        TextDamage(damage);
        if (_currentHP <= 0)
        {
@@ -43,8 +45,14 @@ public class EnemyHealts : MonoBehaviour
        }
     }
 
+    public float GetCurrentHP() { return _currentHP;}
+    
+
     public void notActive()
     {
+       var bag = List_ItemObject.Instation.respawnBags();
+       bag.transform.position = transform.position + new Vector3(0,2,0);
+       bag.SetActive(true);
         gameObject.SetActive(false);
     }
 

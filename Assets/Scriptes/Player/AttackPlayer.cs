@@ -29,8 +29,8 @@ public class AttackPlayer : MonoBehaviour
    public float Damage()
    {
       float random = Random.Range(0, 100);
-      float dmg = PlayerCharacterics.singleton.GetValue(Stat.Damage);
-      if (random <= PlayerCharacterics.singleton.GetValue(Stat.Crit))
+      float dmg = PlayerCharacterics.singleton.GetValue(typeChar.Damage);
+      if (random <= PlayerCharacterics.singleton.GetValue(typeChar.CritChance) / 10)
       {
          dmg *= 2;
          return dmg;
