@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &107112630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1101263392659045407, guid: 5e948eb931d08954191a1d35a0853595,
+    type: 3}
+  m_PrefabInstance: {fileID: 3578593803223832930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &109231540
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +254,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &189742941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3056974823671698523, guid: 5e948eb931d08954191a1d35a0853595,
+    type: 3}
+  m_PrefabInstance: {fileID: 3578593803223832930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189742937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f2c24bde9c22b43ba42c295cd227d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &189742942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
+    type: 3}
+  m_PrefabInstance: {fileID: 3578593803223832930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189742937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c9a9416d860634ea6b5b627e571552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &189742944 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6229006255646631607, guid: 5e948eb931d08954191a1d35a0853595,
+    type: 3}
+  m_PrefabInstance: {fileID: 3578593803223832930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &189742945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b850d0a6ad889f42a02860ff7779c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 189742944}
+  _canvas: {fileID: 1909775516}
+  _text: {fileID: 107112630}
+  _playerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &192734186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -597,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e754f8eae69a9544daa615a514984717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 189742942}
 --- !u!4 &436250227
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,6 +1247,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222771390, guid: 0d8b6a08991580a43aca2efb01d2dff2, type: 3}
+      propertyPath: m_Height
+      value: 1.9909182
+      objectReference: {fileID: 0}
+    - target: {fileID: 222771390, guid: 0d8b6a08991580a43aca2efb01d2dff2, type: 3}
+      propertyPath: m_Radius
+      value: 0.48656923
+      objectReference: {fileID: 0}
+    - target: {fileID: 222771390, guid: 0d8b6a08991580a43aca2efb01d2dff2, type: 3}
+      propertyPath: m_Center.x
+      value: -0.04655993
+      objectReference: {fileID: 0}
+    - target: {fileID: 222771390, guid: 0d8b6a08991580a43aca2efb01d2dff2, type: 3}
+      propertyPath: m_Center.y
+      value: 0.99464226
+      objectReference: {fileID: 0}
+    - target: {fileID: 222771390, guid: 0d8b6a08991580a43aca2efb01d2dff2, type: 3}
+      propertyPath: m_Center.z
+      value: -9.491435e-10
+      objectReference: {fileID: 0}
     - target: {fileID: 5262285377449478736, guid: 0d8b6a08991580a43aca2efb01d2dff2,
         type: 3}
       propertyPath: m_Name
@@ -1769,6 +1838,16 @@ PrefabInstance:
       objectReference: {fileID: 1909775516}
     - target: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
         type: 3}
+      propertyPath: _inputPlayer
+      value: 
+      objectReference: {fileID: 436250226}
+    - target: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
+        type: 3}
+      propertyPath: _attackPlayer
+      value: 
+      objectReference: {fileID: 189742941}
+    - target: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
+        type: 3}
       propertyPath: _layer.m_Bits
       value: 1280
       objectReference: {fileID: 0}
@@ -1777,6 +1856,11 @@ PrefabInstance:
       propertyPath: _layerGround.m_Bits
       value: 1280
       objectReference: {fileID: 0}
+    - target: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
+        type: 3}
+      propertyPath: _playerCharacterics
+      value: 
+      objectReference: {fileID: 189742945}
     - target: {fileID: 8350901363544256215, guid: 5e948eb931d08954191a1d35a0853595,
         type: 3}
       propertyPath: _playerEvent.m_PersistentCalls.m_Calls.Array.size
