@@ -1445,6 +1445,7 @@ MonoBehaviour:
   _DeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _animator: {fileID: 5262285377439971442}
 --- !u!114 &3278701335531164136
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class EnemyHealts : MonoBehaviour
     [SerializeField] private Canvas _canvas;
     [HideInInspector] public HitEvent _hitEvent;
     [HideInInspector] public UnityEvent _DeathEvent;
+    [SerializeField] private Animator _animator;
     private float _maxHP;
 
     private void Awake()
@@ -34,6 +35,7 @@ public class EnemyHealts : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
+        _animator.Play("GetHit");
        _currentHP -= damage;
        _currentHP = Mathf.Clamp(_currentHP, 0, _myChar.maxHealts);
        _myChar.setHP(_currentHP);
@@ -46,15 +48,20 @@ public class EnemyHealts : MonoBehaviour
     }
 
     public float GetCurrentHP() { return _currentHP;}
-    
+
 
     public void notActive()
     {
-       var bag = List_ItemObject.Instation.respawnBags();
-       bag.transform.position = transform.position + new Vector3(0,2,0);
-       bag.SetActive(true);
+        var bag = List_ItemObject.Instation.respawnBags();
+        if (bag != null)
+        {
+            bag.transform.position = transform.position + new Vector3(0, 1, 0);
+            bag.SetActive(true);
+            
+        }
         gameObject.SetActive(false);
     }
+    
 
     public void TextDamage(float damage)
     {

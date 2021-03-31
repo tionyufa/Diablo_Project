@@ -26,6 +26,7 @@ public class EnemyAttack : MonoBehaviour
             if (col.GetComponent<PlayerCharacterics>() != null)
             {
                 col.GetComponent<PlayerCharacterics>()._playerEvent.Invoke(_damage);
+                
             }
         }
     }

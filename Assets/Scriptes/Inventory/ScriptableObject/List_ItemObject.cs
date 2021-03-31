@@ -29,7 +29,7 @@ public class List_ItemObject : MonoBehaviour
    public GameObject respawnBags()
    {
       int random = Random.Range(0, 100);
-      if (random <= 99)
+      if (random <= 15)
       {
          for (int i = 0; i < _Bags.Count; i++)
          {

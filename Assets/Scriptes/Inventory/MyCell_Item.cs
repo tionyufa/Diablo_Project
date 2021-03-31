@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MyCell_Item : MonoBehaviour
 {
-   [SerializeField] private Equip _equip;
+   [SerializeField] private EquipType _equip;
 
-   public Equip CellEquip()
+   public EquipType CellEquip()
    {
       return _equip;
    }

@@ -14,8 +14,8 @@ public class Item
 {
     public Sprite _sprite;
     public string _name;
-    public Equip _typeEquip;
-    public typeChar _typeChar;
+    public EquipType _typeEquip;
+    public CharacterType _typeChar;
     public float _value;
     public float price;
 
